@@ -1,3 +1,3 @@
-public class StudentLogin {
+public class StudentLogin extends User{
 
 }
