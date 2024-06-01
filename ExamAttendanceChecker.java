@@ -2,15 +2,15 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+
 public class ExamAttendanceChecker {
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
 
-   
-    public static void updateAttendance(String studentID, String studentName) throws IOException{
+    public static void updateAttendance(int studentID, String studentName) throws IOException{
         FileWriter writer = null;
         try{
            writer = new FileWriter(attendanceFile, true);
-           writer.write(String.format("%s,%s,%s\n",studentID, studentName,getCurrentDate()));
+           writer.write(String.format("%s,%s,%s ATTENDED\n",studentID, studentName,getCurrentDate()));
 
         }catch (Exception e){
             System.out.println(e);
@@ -18,6 +18,10 @@ public class ExamAttendanceChecker {
             if (writer != null);
             writer.close();
         }
+    }
+    
+    public static void displayIfAttended(String line){
+        
     }
 
     public static String getCurrentDate(){
