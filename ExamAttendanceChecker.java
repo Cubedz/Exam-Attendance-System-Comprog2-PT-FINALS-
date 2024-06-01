@@ -5,9 +5,9 @@ import java.util.*;
 
 public class ExamAttendanceChecker {
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
-
+    
    public static void displayIfAttended(String line){
-        if (line.matches(".*ATTENDED$")){
+        if (line.matches("^\\d{11} ([A-Za-z ]+?) \\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} (ATTENDED)$")){
             System.out.println("The student Attended on " + getCurrentDate());
         }
         else {
