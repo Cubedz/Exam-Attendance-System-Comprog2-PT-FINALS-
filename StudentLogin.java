@@ -1,5 +1,5 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
-
+/* 
 import java.util.Scanner;
 import java.io.*;
 public class StudentLogin extends User
@@ -26,3 +26,4 @@ public class StudentLogin extends User
         }
     }
 }
+*/
