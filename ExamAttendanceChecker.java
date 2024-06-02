@@ -8,7 +8,7 @@ public class ExamAttendanceChecker {
    
    //test run
     public static void main(String[] args) throws IOException {
-        checkAttendance(attendanceFile);
+        readAttendedDate(attendanceFile);
     }
    
         public static void displayIfAttended(String line) {
@@ -50,5 +50,21 @@ public class ExamAttendanceChecker {
                 }
             }
         }
-  
+
+        public static void readAttendedDate(String attendanceFile) throws IOException{//INCOMPLETE
+            BufferedReader reader = null;
+            try{
+                reader = new BufferedReader(new FileReader(attendanceFile));
+                String line;
+                while ((line = reader.readLine()) != null){
+                    if (line.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}")){
+                        System.out.println(line);
+                }
+            }
+            }finally{
+            if (reader != null){
+                reader.close();
+            }
+        }
+    }
 }
