@@ -13,7 +13,7 @@ public class ExamAttendanceChecker {
         
     
     }
-        public static void updateAttendance(String studentID, String studentName) throws IOException {
+        public static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
             List<String> attendanceList = readAttendanceData(attendanceFile); 
                 
             if (isStudentPresent(studentID, studentName, attendanceList)) {
@@ -72,7 +72,7 @@ public class ExamAttendanceChecker {
             return timeStamp;
         }
 
-        public static void storeDisplayDateAttended(String studentID, String attendanceFile) {
+        public static void storeDisplayDateAttended(String studentID, String attendanceFile) { //PRINT DATE ATTENDED ONLY
             BufferedReader r = null;
             try {
                 r = new BufferedReader(new FileReader(attendanceFile));
