@@ -24,7 +24,7 @@ public class ExamAttendanceChecker {
             }
         }
 
-        public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) {
+        public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) { //checks f student is already recorded
             for (String line : attendanceList) {
             if (line.startsWith(studentID + " ")) { 
                 return true; 
@@ -33,7 +33,7 @@ public class ExamAttendanceChecker {
             return false; 
         }
     
-        public static List<String> readAttendanceData(String attendanceFile) throws IOException {
+        public static List<String> readAttendanceData(String attendanceFile) throws IOException { //read attendance data to check later if there is adup
             List<String> attendanceList = new ArrayList<>();
             BufferedReader reader = null;
             try {
@@ -51,7 +51,7 @@ public class ExamAttendanceChecker {
             return attendanceList;
         }
 
-        public static void writeAttendanceData(List<String> attendanceList, String attendanceFile) throws IOException {
+        public static void writeAttendanceData(List<String> attendanceList, String attendanceFile) throws IOException { //writer
             FileWriter writer = null;
             try {
                 writer = new FileWriter(attendanceFile);
