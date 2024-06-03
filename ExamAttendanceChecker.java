@@ -30,7 +30,7 @@ public class ExamAttendanceChecker {
             for (String line : attendanceList) {
             if (line.startsWith(studentID + " ")) { 
                 return true; 
-            }
+                }
             }
             return false; 
         }
@@ -43,12 +43,12 @@ public class ExamAttendanceChecker {
             String line;
             while ((line = reader.readLine()) != null) {
                 attendanceList.add(line);
-            }
+                }
             } catch(Exception e){
             }finally {
             if (reader != null) {
                 reader.close();
-            }
+                }
             }
             return attendanceList;
         }
