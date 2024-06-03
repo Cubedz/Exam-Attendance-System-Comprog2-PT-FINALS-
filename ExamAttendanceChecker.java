@@ -1,14 +1,17 @@
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ExamAttendanceChecker {
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
     public static void main(String[] args) throws IOException {
-        String p = "02000012359";
-        String g = "Ava Thomas";
-        updateAttendance(p, g);
+        String p = "02000012379";
+        String g = "N WORD";
+        
+    
     }
         public static void updateAttendance(String studentID, String studentName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
@@ -23,17 +26,14 @@ public class ExamAttendanceChecker {
             }
         }
 
-        /*
-        public static List<String> storeDateAttended(String studentID, String attendaceFile){
-            List<String> storedAttendance = new ArrayList<>();
-            BufferedReader r = null;
-            try{
-                r = new BufferedReader(new FileReader(attendaceFile));
-                String line;
-                while ((line = r.readLine()) != null) {
-                    if (line.matches())
+        public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) {
+            for (String line : attendanceList) {
+            if (line.startsWith(studentID + " ")) { 
+                return true; 
             }
-        } */
+            }
+            return false; 
+        }
     
         public static List<String> readAttendanceData(String attendanceFile) throws IOException {
             List<String> attendanceList = new ArrayList<>();
@@ -67,18 +67,36 @@ public class ExamAttendanceChecker {
             }
         }
 
-        public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) {
-            for (String line : attendanceList) {
-            if (line.startsWith(studentID + " ")) { 
-                return true; 
-            }
-            }
-            return false; 
-        }
-
         public static String getCurrentDate() {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             return timeStamp;
         }
 
+        public static void storeDisplayDateAttended(String studentID, String attendanceFile) {
+            BufferedReader r = null;
+            try {
+                r = new BufferedReader(new FileReader(attendanceFile));
+                String line;
+        
+                while ((line = r.readLine()) != null) {
+                    Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}");
+                    Matcher m = p.matcher(line);
+                    if (m.find()) {
+                        System.out.println(m.group()); 
+                        break; 
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e); 
+            } finally {
+                if (r != null) {
+                    try {
+                        r.close();
+                    } catch (IOException e) {
+                       
+                        System.out.println(e);
+                    }
+                }
+            }
+        }
 }
