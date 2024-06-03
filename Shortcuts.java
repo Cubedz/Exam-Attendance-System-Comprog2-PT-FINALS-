@@ -7,13 +7,13 @@ public class Shortcuts {
         System.out.flush();
     }
 
-    static boolean isAlphaNumeric(String in){
-        String alphaChecker = "[a-zA-Z0-9]+( [a-zA-Z0-9]+)?";
+    static boolean isAlphaOnly(String in){
+        String alphaChecker = "[a-zA-Z]+( [a-zA-Z]+)?";
         return in.matches(alphaChecker);
     }
 
-    static boolean isAlphaNumericPassword(String input){
-        String alphaChecker = "[a-zA-Z0-9]+";
+    static boolean isNumericID(String input){
+        String alphaChecker = "[0-9]{11}";
         return input.matches(alphaChecker);
     }
 
