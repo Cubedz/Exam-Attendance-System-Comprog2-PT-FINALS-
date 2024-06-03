@@ -19,6 +19,8 @@ public class ExamAttendanceChecker {
             }
         }
 
+        //store time method
+
         public static List<String> readAttendanceData(String attendanceFile) throws IOException {
             List<String> attendanceList = new ArrayList<>();
             BufferedReader reader = null;
@@ -48,7 +50,7 @@ public class ExamAttendanceChecker {
                 writer.close();
                 }
             }
-            }
+        }
 
         public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) {
             for (String line : attendanceList) {
