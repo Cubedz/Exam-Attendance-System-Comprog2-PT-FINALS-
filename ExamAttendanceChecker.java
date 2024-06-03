@@ -8,10 +8,8 @@ public class ExamAttendanceChecker {
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
     public static void main(String[] args) throws IOException {
-        String p = "02000012379";
-        String g = "N WORD";
+        displayAttendanceOnConsole(attendanceFile);
         
-    
     }
         public static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
             List<String> attendanceList = readAttendanceData(attendanceFile); 
@@ -98,5 +96,26 @@ public class ExamAttendanceChecker {
                     }
                 }
             }
+        }
+
+        public static String displayAttendanceOnConsole(String attendanceFile) throws IOException{ //Displays ALL attendace record
+            List<String> attendanceList = new ArrayList<>();
+            BufferedReader r = null;
+            String line;
+            try{
+                r = new BufferedReader(new FileReader(attendanceFile));
+               
+                while ((line = r.readLine()) != null) {
+                    attendanceList.add(line);
+                    System.out.println(line);
+                }
+            }catch (IOException ioe){
+                System.out.println(ioe);
+            }finally{
+                if (r != null) {
+                    r.close();
+                }
+            }
+            return attendanceList.toString();
         }
 }
