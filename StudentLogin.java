@@ -4,11 +4,7 @@ import java.util.*;
 import java.io.*;
 public class StudentLogin extends User
 {
-    public StudentLogin(String studentId, String name, boolean isPaid) {
-        super(studentId, name, isPaid);
-        //TODO Auto-generated constructor stub
-    }
-
+ 
     private static final String loginFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo";
     private static final Scanner sc = new Scanner(System.in);
 
@@ -40,7 +36,6 @@ public class StudentLogin extends User
                     continue;
                 }
             }
-
         
             else
             {

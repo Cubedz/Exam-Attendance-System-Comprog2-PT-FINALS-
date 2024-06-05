@@ -1,48 +1,48 @@
 public class User {
 
 
-   private String username;
-   private String password;
-   private String studentID;
-   private String studentName;
+   private static String username;
+   private static String password;
+   private static String studentID;
+   private static String studentName;
 
-   public String getUsername() {
+   public static String getUsername() {
 
        return username;
    }
 
-   public void setUsername(String username) {
+   public static void setUsername(String username) {
 
-       this.username = username;
+       User.username = username;
    }
 
-   public String getPassword() {
+   public static String getPassword() {
 
        return password;
    }
 
-   public void setPassword(String password) {
+   public static void setPassword(String password) {
   
-       this.password = password;
+       User.password = password;
    }
 
-   public String getStudentID() {
+   public static String getStudentID() {
     
        return studentID;
    }
 
-   public void setStudentID(String student_id) {
+   public static String setStudentID(String student_id) {
     
-       this.studentID = student_id;
+       return User.studentID = student_id;
    }
 
-   public String getStudentName() {
+   public static String getStudentName() {
 
        return studentName;
    }
 
-   public void setStudentName(String student_name) {
+   public static String setStudentName(String student_name) {
 
-       this.studentName = student_name;
+       return User.studentName = student_name;
    }
 }

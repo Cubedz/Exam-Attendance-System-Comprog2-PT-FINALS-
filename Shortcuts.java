@@ -1,7 +1,5 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
 
-import java.io.IOException;
-
 public class Shortcuts {
     static void clearScreen(){
         try

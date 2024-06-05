@@ -7,14 +7,7 @@ import java.util.regex.Pattern;
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
-<<<<<<< HEAD
-   
-=======
-    public static void main(String[] args) throws IOException {
-        displayAllRecordedAttendanceOnConsole(attendanceFile);
-        
-    }
->>>>>>> 59cb7bc9fb6c5916d2f8cac7edc7608203f4a8b6
+
         static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
             List<String> attendanceList = readAttendanceData(attendanceFile); 
                 
