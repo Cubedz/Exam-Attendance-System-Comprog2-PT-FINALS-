@@ -33,7 +33,7 @@ public class Admin extends User
                     String fullName = studentName + " " + studentLName;
 
                     
-                    if(studentID.equals(sID) && fullName.equalsIgnoreCase(sName))
+                    if(studentID.equals(getStudentID()) && fullName.equalsIgnoreCase(getStudentName()))
                     {
                         System.out.println("Student Name: " + fullName);
                         System.out.println("Payment Status: " + isPaid);

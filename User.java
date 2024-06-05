@@ -1,6 +1,6 @@
 public class User 
 {
-   private String username, password;
+   private String username, password, studentID, studentName;
 
 
    public String getUsername()
@@ -19,28 +19,21 @@ public class User
    {
       this.password = password;
    }
+   public String getStudentID()
+   {
+      return studentID;
+   }
+   public void setStudentID(String studentID)
+   {
+      this.studentID = studentID;
+   }
+   public String getStudentName()
+   {
+      return studentName;
+   }
+   public void setStudentName(String studentName)
+   {
+      this.studentName = studentName;
+   }
 
-/* 
- private String studentId;
- private String name;
- private boolean isPaid;
-
- public User(String studentId, String name, boolean isPaid){
-    this.studentId = studentId;
-    this.name = name;
-    this.isPaid = isPaid;
- }
- public String getstudentId(){
-    return studentId;
- }
- public String getName(){
-    return name;
- }
- public boolean isPaid(){
-    return isPaid;
- }
- public boolean isEligible(){
-    return isPaid;
-  }
-  */
 }

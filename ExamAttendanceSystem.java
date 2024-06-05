@@ -2,18 +2,10 @@ import java.io.*;
 import java.util.regex.*;
 import java.nio.*;
 import java.util.Scanner;
-
-/*Admin Log-in
- * Once logged in, get student info
- * display if student is eligible for exam
- * if eligible, record their attendance
- * then ask the next student for their ID and Name
- * continue the program once all students have been recorded
- */
-
-
+import java.util.*;
 public class ExamAttendanceSystem 
 {
+
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
@@ -55,18 +47,18 @@ public class ExamAttendanceSystem
                     while(!loop)
                     {
                         System.out.print("Enter your student id: ");
-                        String sid = sc.nextLine();
+                        admin.setStudentID(sc.nextLine());
                         System.out.print("Enter student name: ");
-                        String sName = sc.nextLine();
+                        admin.setStudentName(sc.nextLine());
 
-                        if(Shortcuts.empty(sid) || Shortcuts.empty(sName))
+                        if(Shortcuts.empty(admin.getStudentID()) || Shortcuts.empty(admin.getStudentName()))
                         {
                             System.out.println("Student id and Student name cannot be null/empty, please try again.");
                             Shortcuts.clearScreen();
                         }
                         else
                         {
-                            admin.studentInfo(sid, sName);
+                            admin.studentInfo(admin.getStudentID(), admin.getStudentName());
                             loop = true;
                         }
                     }
@@ -85,6 +77,4 @@ public class ExamAttendanceSystem
         }
         
     }
-
-
 }
