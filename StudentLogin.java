@@ -44,11 +44,12 @@ public class StudentLogin extends User
         }
     }
 
-    public static boolean checkNameID(String name, String ID)
+    public static boolean checkNameID(String name, String ID) throws IOException
     {
+        BufferedReader br = null;
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader(loginFile));
+            br = new BufferedReader(new FileReader(loginFile));
             String checkline;
 
             while((checkline = br.readLine())!=null)
@@ -65,6 +66,10 @@ public class StudentLogin extends User
         catch(IOException ioe)
         {
             System.out.println(ioe.getMessage());
+        }finally{
+            if(br != null){
+                br.close();
+            }
         }
         return false;
     }
