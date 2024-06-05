@@ -1,41 +1,85 @@
+import java.io.*;
+import java.util.regex.*;
+import java.nio.*;
+import java.util.Scanner;
 import java.util.*;
-public class ExamAttendanceSystem {
+public class ExamAttendanceSystem 
+{
 
-/*Admin Log-in
- * Once logged in, get student info
- * display if student is eligible for exam
- * if eligible, record their attendance
- * then ask the next student for their ID and Name
- * continue the program once all students have been recorded
- */
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        Admin admin = new Admin();
+        String user,pass;
 
-//Front End prototype
- public static void main(String[] args) {
-    String a;
-    String b;
-    String c;
-    String d;
+        System.out.println("Welcome to Admin login.\nplease enter the username and password.");
 
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Welcome Admin");
-    System.out.println("Enter you username: ");
-    a = sc.nextLine();
-    System.out.println("Enter your password");
-    b = sc.nextLine();
+        boolean loggedIn = false;
+        while(!loggedIn)
+        {
+            try
+            {
+                BufferedReader br = new BufferedReader(new FileReader("E:\\xampp\\htdocs\\STUDY\\PROJECTS\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt"));
+                String line;
 
+<<<<<<< HEAD
     
     System.out.println("Succesfully loggged in");
+=======
+                System.out.print("Username: ");
+                admin.setUsername(sc.nextLine());
+                System.out.print("Password: ");
+                admin.setPassword(sc.nextLine());
+                
+                while((line = br.readLine()) != null)
+                {
+                    String password = br.readLine();
+                    
+                    if(line.equalsIgnoreCase(admin.getUsername()) && password.equalsIgnoreCase(admin.getPassword()))
+                    {
+                        System.out.println("Log-in successful.");
+                        loggedIn = true;
+                        Shortcuts.clearScreen();
+                        break;
+                    }
+        
+                }
+                boolean loop = false;
+    
+                if(loggedIn)
+                {
+                    while(!loop)
+                    {
+                        System.out.print("Enter your student id: ");
+                        admin.setStudentID(sc.nextLine());
+                        System.out.print("Enter student name: ");
+                        admin.setStudentName(sc.nextLine());
+>>>>>>> 59cb7bc9fb6c5916d2f8cac7edc7608203f4a8b6
 
-    System.out.println("Enter student id: ");
-    c = sc.nextLine();
+                        if(Shortcuts.empty(admin.getStudentID()) || Shortcuts.empty(admin.getStudentName()))
+                        {
+                            System.out.println("Student id and Student name cannot be null/empty, please try again.");
+                            Shortcuts.clearScreen();
+                        }
+                        else
+                        {
+                            admin.studentInfo(admin.getStudentID(), admin.getStudentName());
+                            loop = true;
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("Invalid credentials. please try again.");
+                    Shortcuts.clearScreen();
+                }
 
-    System.out.println("Enter name: ");
-    d = sc.nextLine();
-
-    //method to check if paid or not
-    //IF student is paid, the program will mark the student as ATTENDED
-    //the program will repeat for the next student to enter their attendance
-    //the program will say if ALL students havce been recorded for that section
-
- }
+                }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        
+    }
 }
