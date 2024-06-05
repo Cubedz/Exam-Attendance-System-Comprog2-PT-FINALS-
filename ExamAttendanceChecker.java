@@ -4,14 +4,14 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExamAttendanceChecker {
+public class ExamAttendanceChecker extends ExamAttendanceSystem{
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
     public static void main(String[] args) throws IOException {
-        displayAttendanceOnConsole(attendanceFile);
+        displayAllRecordedAttendanceOnConsole(attendanceFile);
         
     }
-        public static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
+        static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
             List<String> attendanceList = readAttendanceData(attendanceFile); 
                 
             if (isStudentPresent(studentID, studentName, attendanceList)) {
@@ -24,7 +24,7 @@ public class ExamAttendanceChecker {
             }
         }
 
-        public static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) { //checks f student is already recorded
+        static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) { //checks f student is already recorded
             for (String line : attendanceList) {
             if (line.startsWith(studentID + " ")) { 
                 return true; 
@@ -33,7 +33,7 @@ public class ExamAttendanceChecker {
             return false; 
         }
     
-        public static List<String> readAttendanceData(String attendanceFile) throws IOException { //read attendance data to check later if there is adup
+         static List<String> readAttendanceData(String attendanceFile) throws IOException { //read attendance data to check later if there is adup
             List<String> attendanceList = new ArrayList<>();
             BufferedReader reader = null;
             try {
@@ -51,7 +51,7 @@ public class ExamAttendanceChecker {
             return attendanceList;
         }
 
-        public static void writeAttendanceData(List<String> attendanceList, String attendanceFile) throws IOException { //writer
+        static void writeAttendanceData(List<String> attendanceList, String attendanceFile) throws IOException { //writer
             FileWriter writer = null;
             try {
                 writer = new FileWriter(attendanceFile);
@@ -65,12 +65,12 @@ public class ExamAttendanceChecker {
             }
         }
 
-        public static String getCurrentDate() {
+        static String getCurrentDate() {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             return timeStamp;
         }
 
-        public static void storeDisplayDateAttended(String studentID, String attendanceFile) { //PRINT DATE ATTENDED ONLY
+        static void storeDisplayDateAttended(String studentID, String attendanceFile) { //PRINT DATE ATTENDED ONLY
             BufferedReader r = null;
             try {
                 r = new BufferedReader(new FileReader(attendanceFile));
@@ -98,7 +98,7 @@ public class ExamAttendanceChecker {
             }
         }
 
-        public static String displayAttendanceOnConsole(String attendanceFile) throws IOException{ //Displays ALL attendace record
+        static String displayAttendanceOnConsole(String attendanceFile) throws IOException{ //Displays ALL attendace record
             List<String> attendanceList = new ArrayList<>();
             BufferedReader r = null;
             String line;
@@ -117,5 +117,26 @@ public class ExamAttendanceChecker {
                 }
             }
             return attendanceList.toString();
+        }
+
+        static List<String> displayAllRecordedAttendanceOnConsole(String attendanceFile) throws IOException{
+            List<String> attendedList = new ArrayList<>();
+            BufferedReader r = null;
+            String line;
+            try{
+                r = new BufferedReader(new FileReader(attendanceFile));
+
+                    while((line = r.readLine()) != null){
+                        attendedList.add(line);
+                        System.out.println(line);
+                    }
+            }catch(IOException ioe){
+                System.out.println(ioe);
+            }finally{
+                if (r != null){
+                    r.close();
+                }
+            }
+            return attendedList;
         }
 }
