@@ -1,79 +1,62 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.nio.Buffer;
 import java.util.Scanner;
 
-public class Admin 
+public class Admin extends User 
 {
-    public static void main(String[] args)
+    public void studentInfo(String sID, String sName)
     {
-        Scanner sc = new Scanner(System.in);
-        String user,pass;
-
-        System.out.println("Welcome to Admin login.\nplease enter the username and password.");
-
-            System.out.println("Username: ");
-            user = sc.nextLine();
-            System.out.println("Password: ");
-            pass = sc.nextLine();
-
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader("E:\\xampp\\htdocs\\STUDY\\PROJECTS\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt"));
+            Pattern p = Pattern.compile("(\\d{11}) ([\\w ]+) (\\w+) - (\\w+)");
+            BufferedReader br = new BufferedReader(new FileReader("E:\\xampp\\htdocs\\STUDY\\PROJECTS\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt"));
             String line;
-            boolean loggedIn = false;
+
+            boolean matches = false;
+
+
             while((line = br.readLine()) != null)
             {
-                String password = br.readLine();
-                
-                if(line.equalsIgnoreCase(user) && password.equalsIgnoreCase(pass))
+                Matcher m = p.matcher(line);
+
+                if(m.find())
                 {
-                    loggedIn = true;
-                    break;
+                    String studentID = m.group(1);
+                    String studentName = m.group(2).trim();
+                    String studentLName = m.group(3).trim();
+                    String isPaid = m.group(4);
+
+                    String fullName = studentName + " " + studentLName;
+
+                    
+                    if(studentID.equals(sID) && fullName.equalsIgnoreCase(sName))
+                    {
+                        System.out.println("Student Name: " + fullName);
+                        System.out.println("Payment Status: " + isPaid);
+                        matches = true;
+                        if(isPaid.equalsIgnoreCase("paid"))
+                        {
+                            System.out.println("Eligible for Exam: Yes");
+                        }
+                        else
+                        {
+                            System.out.println("Not eligible for Exam: (" + isPaid + ")");
+                        }
+                        break;
+                    }
+
+                    
                 }
-    
             }
-
-            if(loggedIn)
+            if(!matches)
             {
-                System.out.println("Successfully logged in.");
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-
-                System.out.println("Enter your student id: ");
-                int sid = sc.nextInt();
-
-                studentInfo(sid);
-
+                System.out.println("The entered student id/full name is incorrect.");
             }
-            else
-            {
-                System.out.println("Invalid credentials.");
-            }
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public static void studentInfo(int sID)
-    {
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader("E:\\xampp\\htdocs\\STUDY\\PROJECTS\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt"));
-                String line = br.readLine();
-                boolean valid = false;
                 
-                System.out.println(line);
-                
-                if(valid)
-                {
-                    System.out.println("Test");
-                }
         }
         catch(IOException e)
         {

@@ -1,10 +1,19 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
 
+import java.io.IOException;
+
 public class Shortcuts {
-    static void clearScreen() throws InterruptedException{
-        Thread.sleep(2000);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+    static void clearScreen(){
+        try
+        {
+            Thread.sleep(2000);
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     static boolean isAlphaOnly(String in){
