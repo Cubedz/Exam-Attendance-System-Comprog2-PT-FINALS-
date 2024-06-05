@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamEligibility {
-    qweqweqweqweqwe
-    qweqweqweqweqweqweqweqw
 
     private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-//StudentInfo.txt";
     public static void main(String[] args) {
