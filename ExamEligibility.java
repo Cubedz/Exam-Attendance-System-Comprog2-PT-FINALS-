@@ -1,5 +1,3 @@
-/*
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,8 +8,8 @@ public class ExamEligibility {
 
     private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-//StudentInfo.txt";
     public static void main(String[] args) {
-        List<User> users = loadUsers(STUDENTINFO_STRING);
-        for (User student : users) {
+        List<StdInfoMod> users = loadUsers(STUDENTINFO_STRING);
+        for (StdInfoMod student : users) {
             if (student.isEligible()) {
                 System.out.println("Student " + student.getName() + " (" + student.getstudentId() + ") is eligible to take the exam.");
             } else {
@@ -19,8 +17,8 @@ public class ExamEligibility {
             }
         }
     }
-    private static List<User> loadUsers(String filePath) {
-        List<User> students = new ArrayList<>();
+    private static List<StdInfoMod> loadUsers(String filePath) {
+        List<StdInfoMod> students = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -31,7 +29,7 @@ public class ExamEligibility {
                     String studentsId = studentsInfo[0];
                     String name = studentsInfo[1] + " " + studentsInfo[2];
                     boolean isPaid = parts[1].equalsIgnoreCase("PAID");
-                    students.add(new User(studentsId, name, isPaid));
+                    students.add(new StdInfoMod(studentsId, name, isPaid));
                 }
             }
         } catch (IOException e) {
@@ -41,4 +39,4 @@ public class ExamEligibility {
      }
     }
 
-    */
+    
