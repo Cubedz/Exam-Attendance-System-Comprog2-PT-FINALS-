@@ -4,10 +4,15 @@ import java.util.*;
 import java.io.*;
 public class StudentLogin extends User
 {
-    private static final String loginFile = "C:\\Users\\Ruika\\Desktop\\Folder ni Andrei XD\\STI - CS101A\\Computer Programming\\CODESSS\\VSCxGit\\Exam-Attendance-System-Comprog2-PT-FINALS-\\Exam-Attendance-System-Comprog2-PT-FINALS-";
+    public StudentLogin(String studentId, String name, boolean isPaid) {
+        super(studentId, name, isPaid);
+        //TODO Auto-generated constructor stub
+    }
+
+    private static final String loginFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo";
     private static final Scanner sc = new Scanner(System.in);
 
-    static void StudentLogin() throws IOException, InterruptedException
+    static void studentLogin() throws IOException, InterruptedException
     {
         boolean loggedin = false;
 

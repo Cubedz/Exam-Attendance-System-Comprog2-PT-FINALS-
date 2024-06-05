@@ -20,7 +20,7 @@ public class Admin
 
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader("E:\\xampp\\htdocs\\STUDY\\PROJECTS\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt"));
             String line;
             boolean loggedIn = false;
             while((line = br.readLine()) != null)

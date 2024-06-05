@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ExamEligibility {
 
-    private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-//StudentInfo.txt";
+    private static final String STUDENTINFO_STRING = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
     public static void main(String[] args) {
         List<User> users = loadUsers(STUDENTINFO_STRING);
         for (User student : users) {
@@ -39,6 +39,8 @@ public class ExamEligibility {
         }
         return students;
      }
+
+     
     }
 
     

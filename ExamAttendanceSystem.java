@@ -23,6 +23,7 @@ public class ExamAttendanceSystem {
     System.out.println("Enter your password");
     b = sc.nextLine();
 
+    
     System.out.println("Succesfully loggged in");
 
     System.out.println("Enter student id: ");

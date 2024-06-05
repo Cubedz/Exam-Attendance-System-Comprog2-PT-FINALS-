@@ -1,7 +1,5 @@
 public class User {
-//test
 
-/* 
  private String studentId;
  private String name;
  private boolean isPaid;
@@ -23,5 +21,5 @@ public class User {
  public boolean isEligible(){
     return isPaid;
   }
-  */
+  
 }
