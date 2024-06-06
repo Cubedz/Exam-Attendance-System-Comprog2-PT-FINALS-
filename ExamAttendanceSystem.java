@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+public class ExamAttendanceSystem {
+//MainCodes
+=======
 import java.io.*;
 import java.util.Scanner;
 public class ExamAttendanceSystem 
@@ -22,4 +26,5 @@ public class ExamAttendanceSystem
        
     }
    
+>>>>>>> a26f56ef48ea816adcd8aa8f386450b5809414f7
 }

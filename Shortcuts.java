@@ -1,26 +1,19 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
 //
 public class Shortcuts {
-    static void clearScreen(){
-        try
-        {
-            Thread.sleep(2000);
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-        }
-        catch(InterruptedException e)
-        {
-            e.printStackTrace();
-        }
+    static void clearScreen() throws InterruptedException{
+        Thread.sleep(2000);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
-    static boolean isAlphaOnly(String in){
-        String alphaChecker = "[a-zA-Z]+( [a-zA-Z]+)?";
+    static boolean isAlphaNumeric(String in){
+        String alphaChecker = "[a-zA-Z0-9]+( [a-zA-Z0-9]+)?";
         return in.matches(alphaChecker);
     }
 
-    static boolean isNumericID(String input){
-        String alphaChecker = "[0-9]{11}";
+    static boolean isAlphaNumericPassword(String input){
+        String alphaChecker = "[a-zA-Z0-9]+";
         return input.matches(alphaChecker);
     }
 

@@ -1,4 +1,9 @@
 public class User {
+<<<<<<< HEAD
+//test
+
+
+=======
 
 
    private static String username;
@@ -45,4 +50,5 @@ public class User {
 
        return User.studentName = student_name;
    }
+>>>>>>> a26f56ef48ea816adcd8aa8f386450b5809414f7
 }

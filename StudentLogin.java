@@ -1,7 +1,25 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
 
-import java.util.*;
+import java.util.Scanner;
 import java.io.*;
+<<<<<<< HEAD
+public class StudentLogin extends User{
+    private static final Scanner sc = new Scanner(System.in);
+
+    static void StudentLogin() throws InterruptedException{
+            System.out.println("Please enter your username and password");
+                System.out.println("Username: ");
+                String username = sc.nextLine();
+                System.out.println("Password: ");
+                String password = sc.nextLine();
+
+        if(validateInput.checkUnamePword(username, password)){
+            System.out.println("Log in Successful");
+            Shortcuts.clearScreen();
+    
+        }else{
+            System.out.println("Invalid Username OR Password.");
+=======
 public class StudentLogin extends User
 {
  
@@ -41,36 +59,6 @@ public class StudentLogin extends User
             {
                 System.out.println("Please Refer to the Format.");
             }
+>>>>>>> a26f56ef48ea816adcd8aa8f386450b5809414f7
         }
-    }
-
-    public static boolean checkNameID(String name, String ID) throws IOException
-    {
-        BufferedReader br = null;
-        try
-        {
-            br = new BufferedReader(new FileReader(loginFile));
-            String checkline;
-
-            while((checkline = br.readLine())!=null)
-            {
-                String fileNAME = checkline;
-                String fileID = br.readLine();
-
-                if(fileNAME.equals(name) && fileID.equals(ID))
-                {
-                    return true;
-                }
-            }
-        }
-        catch(IOException ioe)
-        {
-            System.out.println(ioe.getMessage());
-        }finally{
-            if(br != null){
-                br.close();
-            }
-        }
-        return false;
-    }
 }
