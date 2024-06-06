@@ -1,22 +1,23 @@
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
-    
+    //upda6e
         static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
-                
-            if (isStudentPresent(studentID, studentName, attendanceList)) {
+            
+            if (isStudentPresent(studentID, fullName, attendanceList)) {
             System.out.println("Student has already been recorded");
             } else {
-            String newAttendanceData = studentID + " " + studentName + " " + getCurrentDate() + " ATTENDED";
+            String newAttendanceData = studentID + " " + fullName + " " + getCurrentDate() + " ATTENDED";
             attendanceList.add(newAttendanceData); 
             writeAttendanceData(attendanceList, attendanceFile); 
-            System.out.println("Student has been successfuly recorded");
+            System.out.println("Student has been successfully recorded");
             }
         }
 
@@ -50,33 +51,89 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
         static void writeAttendanceData(List<String> attendanceList, String attendanceFile) throws IOException { //writer
             FileWriter writer = null;
             try {
-            writer = new FileWriter(attendanceFile, true);
-            writer.write(String.format("%s,%s,%s ATTENDED\n", studentID, studentName, getCurrentDate()));
-            } catch (Exception e) {
-            System.out.println(e);
+                writer = new FileWriter(attendanceFile);
+                for (String line : attendanceList) {
+                writer.write(line + "\n");
+                }
             } finally {
-            writer.close();
-            }
-        }
-  
-        public static String getCurrentDate() {
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            return timeStamp;
-        }
-  
-        public static void checkAttendance(String attendanceFile) throws IOException {
-            BufferedReader reader = null;
-            try {
-             reader = new BufferedReader(new FileReader(attendanceFile));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                displayIfAttended(line);
-            }
-            } finally {
-                if (reader != null) { 
-                reader.close();
+                if (writer != null) {
+                writer.close();
                 }
             }
         }
-  
+
+        static String getCurrentDate() {
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            return timeStamp;
+        }
+
+        static void storeDisplayDateAttended(String studentID, String attendanceFile) { //PRINT DATE ATTENDED ONLY
+            BufferedReader r = null;
+            try {
+                r = new BufferedReader(new FileReader(attendanceFile));
+                String line;
+        
+                while ((line = r.readLine()) != null) {
+                    Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}");
+                    Matcher m = p.matcher(line);
+                    if (m.find()) {
+                        System.out.println(m.group()); 
+                        break; 
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e); 
+            } finally {
+                if (r != null) {
+                    try {
+                        r.close();
+                    } catch (IOException e) {
+                       
+                        System.out.println(e);
+                    }
+                }
+            }
+        }
+
+        static String displayAttendanceOnConsole(String attendanceFile) throws IOException{ //Displays ALL attendace record
+            List<String> attendanceList = new ArrayList<>();
+            BufferedReader r = null;
+            String line;
+            try{
+                r = new BufferedReader(new FileReader(attendanceFile));
+               
+                while ((line = r.readLine()) != null) {
+                    attendanceList.add(line);
+                    System.out.println(line);
+                }
+            }catch (IOException ioe){
+                System.out.println(ioe);
+            }finally{
+                if (r != null) {
+                    r.close();
+                }
+            }
+            return attendanceList.toString();
+        }
+
+        static List<String> displayAllRecordedAttendanceOnConsole(String attendanceFile) throws IOException{
+            List<String> attendedList = new ArrayList<>();
+            BufferedReader r = null;
+            String line;
+            try{
+                r = new BufferedReader(new FileReader(attendanceFile));
+
+                    while((line = r.readLine()) != null){
+                        attendedList.add(line);
+                        System.out.println(line);
+                    }
+            }catch(IOException ioe){
+                System.out.println(ioe);
+            }finally{
+                if (r != null){
+                    r.close();
+                }
+            }
+            return attendedList;
+        }
 }

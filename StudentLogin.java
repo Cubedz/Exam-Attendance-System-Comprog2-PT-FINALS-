@@ -1,26 +1,8 @@
-//try lang ni-recycle ko lang yung sa pt natin dati
+/*
 
 import java.util.Scanner;
 import java.io.*;
-<<<<<<< HEAD
-public class StudentLogin extends User{
-    private static final Scanner sc = new Scanner(System.in);
-
-    static void StudentLogin() throws InterruptedException{
-            System.out.println("Please enter your username and password");
-                System.out.println("Username: ");
-                String username = sc.nextLine();
-                System.out.println("Password: ");
-                String password = sc.nextLine();
-
-        if(validateInput.checkUnamePword(username, password)){
-            System.out.println("Log in Successful");
-            Shortcuts.clearScreen();
-    
-        }else{
-            System.out.println("Invalid Username OR Password.");
-=======
-public class StudentLogin extends User
+ public class StudentLogin extends User
 {
  
     private static final String loginFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo";
@@ -59,6 +41,8 @@ public class StudentLogin extends User
             {
                 System.out.println("Please Refer to the Format.");
             }
->>>>>>> a26f56ef48ea816adcd8aa8f386450b5809414f7
+
         }
 }
+}
+ */

@@ -1,3 +1,3 @@
 public class RunProgram {
-//Run ExamAttendanceSystem//
+//Run ExamAttendanceSystem//as
 }

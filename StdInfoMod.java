@@ -1,4 +1,4 @@
-public class StdInfoMod extends ExamEligibility {
+public class StdInfoMod {
     
 //low
     private String studentId;

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-public class Admin extends User{
-    //TEST WORKING BRANCH
-=======
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -107,7 +103,7 @@ public class Admin extends User
         }
     }
     
->>>>>>> a26f56ef48ea816adcd8aa8f386450b5809414f7
+
     
     
 }
