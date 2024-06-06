@@ -62,7 +62,6 @@ public class Admin extends User
             br = new BufferedReader(new FileReader("C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt"));
 
             String line;
-
             boolean matches = false;
 
             while((line = br.readLine()) != null)

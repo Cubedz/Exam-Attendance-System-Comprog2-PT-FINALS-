@@ -7,17 +7,17 @@ import java.util.regex.Pattern;
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
-
-        static void updateAttendance(String studentID, String studentName) throws IOException { //UPDATE ATTENDANCE
+    
+        static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
-                
-            if (isStudentPresent(studentID, studentName, attendanceList)) {
+            
+            if (isStudentPresent(studentID, fullName, attendanceList)) {
             System.out.println("Student has already been recorded");
             } else {
-            String newAttendanceData = studentID + " " + studentName + " " + getCurrentDate() + " ATTENDED";
+            String newAttendanceData = studentID + " " + fullName + " " + getCurrentDate() + " ATTENDED";
             attendanceList.add(newAttendanceData); 
             writeAttendanceData(attendanceList, attendanceFile); 
-            System.out.println("Student has been successfuly recorded");
+            System.out.println("Student has been successfully recorded");
             }
         }
 
