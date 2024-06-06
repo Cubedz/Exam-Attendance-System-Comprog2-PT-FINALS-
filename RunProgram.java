@@ -1,3 +1,8 @@
+import java.io.IOException;
+
 public class RunProgram {
-//Run ExamAttendanceSystem//as//
+    public static void main(String[] args) throws IOException {
+        ExamAttendanceSystem eas = new ExamAttendanceSystem();
+        eas.examAttendanceSystemProgram();
+    }
 }

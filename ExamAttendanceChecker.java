@@ -136,5 +136,21 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
             }
             return attendedList;
         }
+
+        public static int numberofStudents(String filePath) throws IOException {
+            int lineCount = 1;
+            BufferedReader reader = null;
+            try {
+                reader = new BufferedReader(new FileReader(filePath));
+              while (reader.readLine() != null) {
+                System.out.println(lineCount);
+                lineCount++;
+              }
+            }finally{
+                if(reader != null){
+                    reader.close();
+                }
+            }
+            return lineCount;
+          }
 }
-//

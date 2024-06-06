@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Scanner;
-//
+
 public class Admin extends User 
 {
 
@@ -102,8 +102,4 @@ public class Admin extends User
             }
         }
     }
-    
-
-    
-    
 }
