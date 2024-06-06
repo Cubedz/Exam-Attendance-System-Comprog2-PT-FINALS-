@@ -1,5 +1,5 @@
 //try lang ni-recycle ko lang yung sa pt natin dati
-
+//
 public class Shortcuts {
     static void clearScreen(){
         try

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
    
-    
+    //
         static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
             

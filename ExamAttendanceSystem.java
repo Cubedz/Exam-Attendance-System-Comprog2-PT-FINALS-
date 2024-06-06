@@ -6,7 +6,7 @@ public class ExamAttendanceSystem
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
       
-      
+      //
 
         if (Admin.adminLogin(adminLog)) {
           System.out.println("Admin Login Successful. Enter Student ID and Name:");
