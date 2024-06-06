@@ -9,7 +9,7 @@ public class ExamAttendanceSystem
         Scanner sc = new Scanner(System.in);
       
     
-//updatre
+//updatre//
         if (Admin.adminLogin(adminLog)) {
           System.out.println("Admin Login Successful. Enter Student ID and Name:");
       
@@ -19,6 +19,7 @@ public class ExamAttendanceSystem
             User.setStudentName(sc.nextLine());
  
           Admin.studentInfo(User.getStudentID(), User.getStudentName());
+            //if
             ExamAttendanceChecker.updateAttendance(User.getStudentID(),User.getStudentName());
         } 
        
