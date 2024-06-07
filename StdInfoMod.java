@@ -1,4 +1,4 @@
-public class StdInfoMod {
+/*public class StdInfoMod {
     ///
 //low
     private String studentId;
@@ -24,3 +24,4 @@ public class StdInfoMod {
      }
      
 }
+ */

@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class ExamEligibility {
 
-    //private static final String STUDENTINFO_STRING = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
-    private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
+    private static final String STUDENTINFO_STRING = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
+    //private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
      public static boolean eligibility(String sid, String studname) throws IOException{
 
         boolean elibgible = false;

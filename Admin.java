@@ -7,8 +7,9 @@ import java.util.Scanner;
 
 public class Admin extends User 
 {
-
-    public static boolean adminLogin(String adminLogFile) throws IOException { //UPDATED METHOD
+  private static final String adminLogsFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt";
+  private static final String studentInfoFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
+  public static boolean adminLogin(String adminLogFile) throws IOException { //UPDATED METHOD
 
         System.out.println("Welcome to Admin login.\nPlease enter the username and password.");
         boolean loggedIn = false;
@@ -25,9 +26,8 @@ public class Admin extends User
             System.out.print("Password: ");
             String password = sc.nextLine();
       
-            String storedPassword = br.readLine(); 
       
-            if (username.equalsIgnoreCase(line) && password.equalsIgnoreCase(storedPassword)) {
+            if (checkUnamePword(username, password) == true) {
               System.out.println("Login successful.");
               loggedIn = true;
               break;
@@ -38,7 +38,7 @@ public class Admin extends User
           }
       
           if (!loggedIn && attemptCount == 3) {
-            System.out.println("Login failed. Maximum attempts reached. Please try again in 10 seconds.");
+            System.out.println("Login failed. Maximum attempts reached. Please try again. Exiting Program in 10 seconds.");
             try {
               Thread.sleep(10000); 
             } catch (InterruptedException e) {
@@ -59,7 +59,7 @@ public class Admin extends User
         {
 
             Pattern p = Pattern.compile("(\\d{11}) ([\\w ]+) (\\w+) - (\\w+)");
-            br = new BufferedReader(new FileReader("C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt"));
+            br = new BufferedReader(new FileReader(studentInfoFile));
 
             String line;
             boolean matches = false;
@@ -102,4 +102,27 @@ public class Admin extends User
             }
         }
     }
+
+    public static boolean checkUnamePword(String username, String password) throws IOException{
+      BufferedReader br = null;
+      try{
+          br = new BufferedReader(new FileReader(adminLogsFile));
+          String checkline;
+      
+          while((checkline = br.readLine())!=null){
+              String fileUser = checkline;
+              String filePword = br.readLine();
+              if(fileUser.equals(username) && filePword.equals(password)){
+                      return true;
+              }
+          }
+      }catch(IOException ioe){
+          System.out.println(ioe.getMessage());
+      }finally{
+        if(br != null){
+          br.close();
+        }
+      }
+      return false;
+  }
 }

@@ -5,21 +5,40 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
-   //private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
-   private static final String attendanceFile = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AttendanceTracker.txt";
+   private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
+   //private static final String attendanceFile = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AttendanceTracker.txt";
 
-    //upda6e
         static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
-            
-            if (isStudentPresent(studentID, fullName, attendanceList)) {
-            System.out.println("Student has already been recorded");
-            } else {
-            String newAttendanceData = studentID + " " + fullName + " " + getCurrentDate() + " ATTENDED";
-            attendanceList.add(newAttendanceData); 
-            writeAttendanceData(attendanceList, attendanceFile); 
-            System.out.println("Student has been successfully recorded");
+            if(isValidStudentInput(studentID, fullName)==true){
+                if (isStudentPresent(studentID, fullName, attendanceList)) {
+                    System.out.println("Student has already been recorded");
+                    } else {
+                    String newAttendanceData = studentID + " " + fullName + " " + getCurrentDate() + " ATTENDED";
+                    attendanceList.add(newAttendanceData); 
+                    writeAttendanceData(attendanceList, attendanceFile); 
+                    System.out.println("Student has been successfully recorded");
+                    }
+            }else{
+                System.out.println("Please Enter a Valid ID and Name");
             }
+        }
+
+        public static boolean isValidStudentInput(String studentID, String fullName) {
+            if (studentID.isEmpty() || fullName.isEmpty()) {
+                System.out.println("Error: Student ID and full name cannot be empty.");
+                return false;
+            }
+            Pattern pSID = Pattern.compile("^\\d{11}$");  
+            Matcher mID = pSID.matcher(studentID);
+            Pattern pname = Pattern.compile("^[a-zA-Z ]+$");  
+            Matcher mname = pname.matcher(fullName);
+    
+            if (!mID.matches() || !mname.matches()) {
+                System.out.println("Please enter a valid ID and Name");
+                return false;
+            }
+            return true;
         }
 
         static boolean isStudentPresent(String studentID, String studentName, List<String> attendanceList) { //checks f student is already recorded
@@ -68,55 +87,6 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
             return timeStamp;
         }
 
-        static void storeDisplayDateAttended(String studentID, String attendanceFile) { //PRINT DATE ATTENDED ONLY
-            BufferedReader r = null;
-            try {
-                r = new BufferedReader(new FileReader(attendanceFile));
-                String line;
-        
-                while ((line = r.readLine()) != null) {
-                    Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}");
-                    Matcher m = p.matcher(line);
-                    if (m.find()) {
-                        System.out.println(m.group()); 
-                        break; 
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e); 
-            } finally {
-                if (r != null) {
-                    try {
-                        r.close();
-                    } catch (IOException e) {
-                       
-                        System.out.println(e);
-                    }
-                }
-            }
-        }
-
-        static String displayAttendanceOnConsole(String attendanceFile) throws IOException{ //Displays ALL attendace record
-            List<String> attendanceList = new ArrayList<>();
-            BufferedReader r = null;
-            String line;
-            try{
-                r = new BufferedReader(new FileReader(attendanceFile));
-               
-                while ((line = r.readLine()) != null) {
-                    attendanceList.add(line);
-                    System.out.println(line);
-                }
-            }catch (IOException ioe){
-                System.out.println(ioe);
-            }finally{
-                if (r != null) {
-                    r.close();
-                }
-            }
-            return attendanceList.toString();
-        }
-
         static List<String> displayAllRecordedAttendanceOnConsole(String attendanceFile) throws IOException{
             List<String> attendedList = new ArrayList<>();
             BufferedReader r = null;
@@ -137,21 +107,4 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
             }
             return attendedList;
         }
-
-        public static int numberofStudents(String filePath) throws IOException {
-            int lineCount = 1;
-            BufferedReader reader = null;
-            try {
-                reader = new BufferedReader(new FileReader(filePath));
-              while (reader.readLine() != null) {
-                System.out.println(lineCount);
-                lineCount++;
-              }
-            }finally{
-                if(reader != null){
-                    reader.close();
-                }
-            }
-            return lineCount;
-          }
 }
