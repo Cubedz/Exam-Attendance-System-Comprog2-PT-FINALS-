@@ -2,7 +2,7 @@
 //
 public class Shortcuts {
     static void clearScreen() throws InterruptedException{
-        Thread.sleep(2000);
+        Thread.sleep(100);
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }

@@ -22,23 +22,31 @@ public class ExamAttendanceSystem {
         do { 
             System.out.println();
             System.out.println(Font.bText + Font.iText +"-------Student ID and Name-------"+ Font.resetText);//F
-        System.out.println("Please enter student ID:");
-        User.setStudentID(sc.nextLine());
-        System.out.print("Enter student name: ");
-        User.setStudentName(sc.nextLine());
+                System.out.println("Please enter student ID:");
+                User.setStudentID(sc.nextLine());
+                 System.out.print("Enter student name: ");
+                 System.out.println();
+                    User.setStudentName(sc.nextLine());
 
-            if(ExamAttendanceChecker.isValidStudentInput(User.getStudentID(), User.getStudentName())){
-                if (ExamEligibility.eligibility(User.getStudentID(), User.getStudentName())) {
-                    ExamAttendanceChecker.updateAttendance(User.getStudentID(), User.getStudentName());
-                    }
-            }
+                     if(ExamAttendanceChecker.isValidStudentInput(User.getStudentID(), User.getStudentName())){
+                        if (ExamEligibility.eligibility(User.getStudentID(), User.getStudentName())) {
+                             ExamAttendanceChecker.updateAttendance(User.getStudentID(), User.getStudentName());
+                         }
+                     }
             
-        System.out.println();  
-        System.out.println("Record another student? \nPress 'Y' for YES \nPress 'N' for NO"); //F
-        System.out.print("Response: ");//F
-        recordMoreStudents = sc.nextLine().equalsIgnoreCase("y");
+            System.out.println();  
+            System.out.println("Record another student? \nPress 'Y' for YES \nPress 'N' for NO"); //F
+            System.out.print("Response: ");//F
+            recordMoreStudents = sc.nextLine().equalsIgnoreCase("y");
+            try {
+                Shortcuts.clearScreen();
+                } catch (InterruptedException e) {
+                }
         } while (recordMoreStudents);
-
+            try {
+            Shortcuts.clearScreen();
+                } catch (InterruptedException e) {
+                }
         System.out.println("\nAttendance recording finished.");
         System.out.println();
         System.out.println("ALL STUDENTS WHO ATTENDED: ");
@@ -48,11 +56,11 @@ public class ExamAttendanceSystem {
     } else {
         System.out.println();
         System.out.println(Font.iText +"Run it again!"+ Font.resetText); // for the admin to record again
-        try {
+            try {
             Thread.sleep(500);
-        } catch (InterruptedException e) {
+            } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+            }
         System.out.println(Font.bText +"Exited."); // Finally exited
    
     }

@@ -10,7 +10,7 @@ public class Admin extends User
   private static final String adminLogsFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt";
   private static final String studentInfoFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
   /*private static final String adminLogsFile = "D:\\Downloads\\txt files\\AdminLog.txt";
-  private static final String studentInfoFile = "D:\\Downloads\\txt files\\StudentInfo.txt"; */
+  private static final String studentInfoFile = "D:\\Downloads\\txt files\\StudentInfo.txt";*/
   public static boolean adminLogin(String adminLogFile) throws IOException { 
 
         System.out.println(Font.bText +"---------------------------------------------------");//F
