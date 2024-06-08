@@ -5,28 +5,31 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
-   private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
+    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
+   //private static final String attendanceFile = "D:\\Downloads\\txt files//AttendanceTracker.txt";//
    //private static final String attendanceFile = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AttendanceTracker.txt";
 
         static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 
             if(isValidStudentInput(studentID, fullName)==true){
                 if (isStudentPresent(studentID, fullName, attendanceList)) {
-                    System.out.println("Student has already been recorded");
+                    System.out.println("Student has already been recorded!");
                     } else {
                     String newAttendanceData = studentID + " " + fullName + " " + getCurrentDate() + " ATTENDED";
                     attendanceList.add(newAttendanceData); 
                     writeAttendanceData(attendanceList, attendanceFile); 
-                    System.out.println("Student has been successfully recorded");
+                    System.out.println(Font.bText+"Student has been successfully recorded!"+ Font.resetText);//F
+                   
                     }
             }else{
-                System.out.println("Please Enter a Valid ID and Name");
+                System.out.println();//F
+                System.out.println(Font.bText+ Font.ulineText + "Please Enter a Valid ID and Name."+ Font.resetText);//F
             }
         }
 
         public static boolean isValidStudentInput(String studentID, String fullName) {
             if (studentID.isEmpty() || fullName.isEmpty()) {
-                System.out.println("Error: Student ID and full name cannot be empty.");
+                System.out.println(Font.bText+ "Error: " + Font.resetText + "Student ID and full name cannot be empty.");//F
                 return false;
             }
             Pattern pSID = Pattern.compile("^\\d{11}$");  
@@ -35,9 +38,10 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
             Matcher mname = pname.matcher(fullName);
     
             if (!mID.matches() || !mname.matches()) {
-                System.out.println("Please enter a valid ID and Name");
+                System.out.println();
+                System.out.println(Font.bText+ Font.ulineText + "Please Enter a Valid ID and Name."+ Font.resetText);//F
                 return false;
-            }
+            } 
             return true;
         }
 
@@ -107,4 +111,6 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
             }
             return attendedList;
         }
-}
+    }
+ 
+       

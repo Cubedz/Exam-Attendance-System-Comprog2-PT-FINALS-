@@ -9,9 +9,14 @@ public class Admin extends User
 {
   private static final String adminLogsFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt";
   private static final String studentInfoFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
-  public static boolean adminLogin(String adminLogFile) throws IOException { //UPDATED METHOD
+  /*private static final String adminLogsFile = "D:\\Downloads\\txt files\\AdminLog.txt";
+  private static final String studentInfoFile = "D:\\Downloads\\txt files\\StudentInfo.txt"; */
+  public static boolean adminLogin(String adminLogFile) throws IOException { 
 
-        System.out.println("Welcome to Admin login.\nPlease enter the username and password.");
+        System.out.println(Font.bText +"---------------------------------------------------");//F
+        System.out.println("|"+ Font.iText + "WELCOME TO ADMIN LOGIN! Enter Username & Password"+ Font.resetText+ "|"); //F
+        System.out.println(Font.bText +"---------------------------------------------------"+ Font.resetText); //F
+        
         boolean loggedIn = false;
         int attemptCount = 0;
       
@@ -21,6 +26,7 @@ public class Admin extends User
           String line;
       
           while (attemptCount < 3 && (line = br.readLine()) != null) {
+            
             System.out.print("Username: ");
             String username = sc.nextLine();
             System.out.print("Password: ");
@@ -28,18 +34,24 @@ public class Admin extends User
       
       
             if (checkUnamePword(username, password) == true) {
-              System.out.println("Login successful.");
+
+              System.out.println(Font.iText + "Logged in successfully!"+ Font.resetText); //F
               loggedIn = true;
               break;
             } else {
               attemptCount++;
-              System.out.println("Login failed. Attempts remaining: " + (3 - attemptCount));
+              
+              System.out.println("Login failed. Attempts remaining: " +Font.bText + (3 - attemptCount)+ Font.resetText ); //F
+              System.out.println();
             }
           }
       
           if (!loggedIn && attemptCount == 3) {
-            System.out.println("Login failed. Maximum attempts reached. Please try again. Exiting Program in 10 seconds.");
+            System.out.println("Login failed. Maximum attempts reached. Please try again later."); //red
+            
             try {
+              Thread.sleep(1000);//F
+              System.out.println("Exiting Program in 10 seconds..."); //F
               Thread.sleep(10000); 
             } catch (InterruptedException e) {
               System.out.println(e);
@@ -78,20 +90,20 @@ public class Admin extends User
                     String fullName = studentName + " " + studentLName;
 
                     if(studentID.equals(getStudentID()) && fullName.equalsIgnoreCase(getStudentName())){
-                        System.out.println("Student Name: " + fullName);
-                        System.out.println("Payment Status: " + isPaid);
+                        System.out.println("Student Name: " + fullName); 
+                        System.out.println("Payment Status: " + isPaid); 
                         matches = true;
-                        if(isPaid.equalsIgnoreCase("paid")){
-                            System.out.println("Eligible for Exam: Yes");
+                        if(isPaid.equalsIgnoreCase(Font.bText +"paid"+ Font.resetText)){//F
+                            System.out.println(Font.iText + Font.bText +"Eligible for Exam: Yes"+ Font.resetText); //F
                         }else{
-                            System.out.println("Not eligible for Exam: (" + isPaid + ")");
+                            System.out.println(Font.bText +"Not eligible for Exam: (" + Font.bText +isPaid + ")"+ Font.resetText) ; //F
                         }
                         break;
                     }
                 }
             }
             if(!matches){
-                System.out.println("The entered student id/full name is incorrect.");
+                System.out.println( Font.ulineText+ "The entered student id/full name is incorrect."+ Font.resetText);//F
             }
         }catch(IOException e)
         {
@@ -112,7 +124,7 @@ public class Admin extends User
           while((checkline = br.readLine())!=null){
               String fileUser = checkline;
               String filePword = br.readLine();
-              if(fileUser.equals(username) && filePword.equals(password)){
+              if(fileUser.equalsIgnoreCase(username) && filePword.equals(password)){
                       return true;
               }
           }

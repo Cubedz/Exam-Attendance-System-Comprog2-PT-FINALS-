@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExamEligibility {
-
     private static final String STUDENTINFO_STRING = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
+    //private static final String STUDENTINFO_STRING = "D:\\Downloads\\txt files\\StudentInfo.txt";//
     //private static final String STUDENTINFO_STRING = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\StudentInfo.txt";
      public static boolean eligibility(String sid, String studname) throws IOException{
 
@@ -26,10 +26,10 @@ public class ExamEligibility {
                         if(studentID.equalsIgnoreCase(sid) && studFullName.equalsIgnoreCase(studname)){
                             String paid = m.group(4);
                             if(paid.equalsIgnoreCase("paid")){
-                                System.out.println("Eligible for Exam: Yes");
+                                System.out.println("Eligible for Exam: " +Font.iText + Font.bText + "Yes"+ Font.resetText);//F
                                 elibgible = true;
                             }else{
-                                System.out.println("Not eligible for Exam: (" + paid+ " PAYMENT)");
+                                System.out.println("Not eligible for Exam: (" + Font.bText +paid + " PAYMENT)"+ Font.resetText);//F
                             }
                         }
                 }
