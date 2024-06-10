@@ -1,5 +1,5 @@
 //try lang ni-recycle ko lang yung sa pt natin da//ti
-//
+////
 public class Shortcuts {
     static void clearScreen() throws InterruptedException{
         Thread.sleep(100);

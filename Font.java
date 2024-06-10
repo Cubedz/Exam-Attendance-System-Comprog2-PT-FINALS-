@@ -1,5 +1,5 @@
 public class Font{
-
+//
 final static String Red = "\u001b[31m";
 final static String BRed = "\u001b[31;1m";
 
