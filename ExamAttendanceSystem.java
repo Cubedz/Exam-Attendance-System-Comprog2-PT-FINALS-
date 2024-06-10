@@ -40,7 +40,8 @@ public class ExamAttendanceSystem {
                             break;
                         }else{
                             Shortcuts.clearScreen();
-                            System.out.println(Font.bText + "Please only enter 'Y' or 'N'");
+                            System.out.println(Font.bText + "Please only enter 'Y' or 'N'" +Font.resetText);
+                            System.out.println();
                         }
                      }
            
