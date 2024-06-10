@@ -5,7 +5,7 @@ public class ExamAttendanceSystem {
     final static String attendanceTrackerFile = "AttendanceTracker.txt";
     final static String adminLog = "AdminLog.txt";
     
-    public void examAttendanceSystemProgram() throws IOException {
+    public void examAttendanceSystemProgram() throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
         boolean loggedIn = Admin.adminLogin(adminLog);
 
@@ -26,11 +26,27 @@ public class ExamAttendanceSystem {
                              ExamAttendanceChecker.updateAttendance(User.getStudentID(), User.getStudentName());
                          }
                      }
-            
-            System.out.println();  
-            System.out.println("Record another student? \nPress 'Y' for YES \nPress 'N' for NO"); //F
-            System.out.print("Response: ");//F
-            recordMoreStudents = sc.nextLine().equalsIgnoreCase("y");
+                    
+                     System.out.println();  
+                     while(true){
+                        System.out.println("Record another student? \nPress 'Y' for YES \nPress 'N' for NO"); //F
+                        System.out.print("Response: ");//F
+                        String input = sc.nextLine().trim().toLowerCase();
+                        if(input.equals("y")){
+                            recordMoreStudents = true;
+                            break;
+                        }else if (input.equals("n")){
+                            recordMoreStudents=false;
+                            break;
+                        }else{
+                            Shortcuts.clearScreen();
+                            System.out.println(Font.bText + "Please only enter 'Y' or 'N'");
+                        }
+                     }
+           
+           
+         
+                     
             try {
                 Shortcuts.clearScreen();
                 } catch (InterruptedException e) {
@@ -42,13 +58,13 @@ public class ExamAttendanceSystem {
                 }
         System.out.println("\nAttendance recording finished.");
         System.out.println();
-        System.out.println("ALL STUDENTS WHO ATTENDED: ");
         ExamAttendanceChecker.displayAllRecordedAttendanceOnConsole(attendanceTrackerFile);
         System.out.println();
-        System.out.println(Font.bText +"Thank you for using our system.\nRun it again!");
+        System.out.println(Font.bText +"Thank you for using our system.");
+        Thread.sleep(5000);
+        Shortcuts.clearScreen();
     } else {
         System.out.println();
-        System.out.println(Font.iText +"Run it again!"+ Font.resetText); // for the admin to record again
             try {
             Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -61,11 +77,3 @@ public class ExamAttendanceSystem {
     }
     
 }
-
-
-  
-
-
-
-            
-  

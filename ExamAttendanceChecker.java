@@ -91,13 +91,16 @@ public class ExamAttendanceChecker extends ExamAttendanceSystem{
         }
 
         static List<String> displayAllRecordedAttendanceOnConsole(String attendanceFile) throws IOException{
+            System.out.println("ALL STUDENTS WHO ATTENDED: ");
             List<String> attendedList = new ArrayList<>();
             BufferedReader r = null;
             String line;
             try{
+                
                 r = new BufferedReader(new FileReader(attendanceFile));
 
                     while((line = r.readLine()) != null){
+                        
                         attendedList.add(line);
                         System.out.println(line);
                     }
