@@ -61,7 +61,8 @@ public class ExamAttendanceSystem {
         System.out.println();
         ExamAttendanceChecker.displayAllRecordedAttendanceOnConsole(attendanceTrackerFile);
         System.out.println();
-        System.out.println(Font.bText +"Thank you for using our system.");
+        System.out.println(Font.bText +"Thank you for using our system."+Font.resetText);
+        System.out.println(Font.iText +"Exiting Program in 5 seconds..."+Font.resetText); 
         Thread.sleep(5000);
         Shortcuts.clearScreen();
     } else {
