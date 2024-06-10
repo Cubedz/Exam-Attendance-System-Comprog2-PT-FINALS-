@@ -1,14 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.Scanner;
 
 public class Admin extends User 
 {
   private static final String adminLogsFile = "AdminLog.txt";
-  private static final String studentInfoFile = "StudentInfo.txt";
+
 
   public static boolean adminLogin(String adminLogFile) throws IOException { 
 
