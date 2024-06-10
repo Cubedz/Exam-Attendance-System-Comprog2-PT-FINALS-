@@ -5,9 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExamAttendanceChecker extends ExamAttendanceSystem{
-    private static final String attendanceFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
-   //private static final String attendanceFile = "D:\\Downloads\\txt files//AttendanceTracker.txt";
-   //private static final String attendanceFile = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AttendanceTracker.txt";
+    private static final String attendanceFile = "AttendanceTracker.txt";
+   
 
         static void updateAttendance(String studentID, String fullName) throws IOException {
             List<String> attendanceList = readAttendanceData(attendanceFile); 

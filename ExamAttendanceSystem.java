@@ -1,17 +1,10 @@
-//MAJOR ERROR BUG FIX: AYOS NA YUNG NAG LO-LOOP PAPUNTANG LOGIN PAG TAPOS NA MAGRECORD NG STUDENT.
-
-//MAJOR ERROR: NAG LO LOOP BACK SA ADMIN LOG-IN AT WALANG NUMBER OF ATTEMPTS KUNG ILAN LANG PWEDE MARECORD. (OPTIONAL FEATURE: MAG 
-//DAGDAG NG MULTIPLESECTIONS PARA I CHECK ATTENDANCE NILA)
 
 import java.io.*;
 import java.util.Scanner;
 public class ExamAttendanceSystem {
-    final static String attendanceTrackerFile = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-//AttendanceTracker.txt";
-    final static String adminLog = "C:\\IZECUBES\\COLLEGE\\1ST YEAR\\SEM 2\\Comprog 2\\ACTIVITIES\\FINALS PT\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt";
-    /*final static String attendanceTrackerFile = "D:\\Downloads\\txt files//AttendanceTracker.txt";
-    final static String adminLog = "D:\\Downloads\\txt files\\AdminLog.txt";*/
-    //final static String adminLog = "C:\\Users\\user\\OneDrive\\Documents\\GitHub\\Exam-Attendance-System-Comprog2-PT-FINALS-\\AdminLog.txt";
-
+    final static String attendanceTrackerFile = "AttendanceTracker.txt";
+    final static String adminLog = "AdminLog.txt";
+    
     public void examAttendanceSystemProgram() throws IOException {
         Scanner sc = new Scanner(System.in);
         boolean loggedIn = Admin.adminLogin(adminLog);
