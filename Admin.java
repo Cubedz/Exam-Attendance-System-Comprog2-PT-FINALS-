@@ -63,56 +63,6 @@ public class Admin extends User
         return loggedIn;
       }
 
-    public static void studentInfo(String sID, String sName) throws IOException
-    {
-        BufferedReader br = null;
-        try
-        {
-
-            Pattern p = Pattern.compile("(\\d{11}) ([\\w ]+) (\\w+) - (\\w+)");
-            br = new BufferedReader(new FileReader(studentInfoFile));
-
-            String line;
-            boolean matches = false;
-
-            while((line = br.readLine()) != null)
-            {
-                Matcher m = p.matcher(line);
-
-                if(m.find()==true)
-                {
-                    String studentID = m.group(1);
-                    String studentName = m.group(2).trim();
-                    String studentLName = m.group(3).trim();
-                    String isPaid = m.group(4);
-
-                    String fullName = studentName + " " + studentLName;
-
-                    if(studentID.equals(getStudentID()) && fullName.equalsIgnoreCase(getStudentName())){
-                        System.out.println("Student Name: " + fullName); 
-                        System.out.println("Payment Status: " + isPaid); 
-                        matches = true;
-                        if(isPaid.equalsIgnoreCase(Font.bText +"paid"+ Font.resetText)){
-                            System.out.println(Font.iText + Font.bText +"Eligible for Exam: Yes"+ Font.resetText);
-                        }else{
-                            System.out.println(Font.bText +"Not eligible for Exam: (" + Font.bText +isPaid + ")"+ Font.resetText); 
-                        }
-                        break;
-                    }
-                }
-            }
-            if(!matches){
-                System.out.println( Font.ulineText+ "The entered student id/full name is incorrect."+ Font.resetText);
-            }
-        }catch(IOException e)
-        {
-            e.printStackTrace();
-        }finally{
-            if(br != null){
-                br.close();
-            }
-        }
-    }
 
     public static boolean checkUnamePword(String username, String password) throws IOException{
       BufferedReader br = null;
